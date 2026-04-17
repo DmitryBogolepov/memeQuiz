@@ -3,6 +3,129 @@
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Стартовый экран */
+.starter-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.starter-page h2 {
+    font-size: 24px;
+}
+
+/* Кнопки */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.start-btn {
+    background: #4f46e5;
+    color: white;
+}
+
+.start-btn:hover {
+    background: #4338ca;
+}
+
+.submit-btn {
+    background: #10b981;
+    color: white;
+}
+
+.submit-btn:hover {
+    background: #059669;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* Блок с вопросом */
+.quiz-block {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Номер вопроса */
+.question-number {
+    font-size: 20px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+/* Картинка */
+#memeImg,
+#correctMemeImg {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+/* Подпись */
+.write {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+}
+
+/* Инпут + кнопка */
+.input-item {
+    display: flex;
+    gap: 10px;
+}
+
+#memeInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: 0.2s;
+}
+
+#memeInput:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
+
+/* Статистика */
+.score {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#correct {
+    color: green;
+    font-weight: bold;
+}
+
+#notCorrect {
+    color: red;
+    font-weight: bold;
+}
+
+.score p {
+    font-size: 17px;
+}
+
 .main {
     background: -webkit-linear-gradient(90deg, #ffffff,#d0e3ff,#eaeaee,#faf2e5);background: linear-gradient(90deg, #ffffff,#d0e3ff,#eaeaee,#faf2e5);
     min-height: 100vh;
@@ -11,6 +134,11 @@
     align-items: center;
     margin: 0;
     color: #18181c;
+}
+
+.main-title {
+    margin-bottom: 20px;
+
 }
 
 .quiz{
@@ -23,4 +151,8 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     border: 1px solid #ffffff30;
     text-align: center;
+}
+
+.quiz-block {
+    display: none;
 }

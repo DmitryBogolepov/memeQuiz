@@ -17,11 +17,11 @@ const wrongEl = document.getElementById('notCorrect');
 
 // Данные о вопросах
 const quizData =  [
-    {id:1, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
-    {id:2, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
-    {id:3, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
-    {id:4, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
-    {id:5, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
+    {id:1, img:'images/blured/', answer: 'почему', correctImg: 'images/correct/'},
+    {id:2, img:'images/blured/', answer: 'окак', correctImg: 'images/correct/'},
+    {id:3, img:'images/blured/', answer: 'зачем', correctImg: 'images/correct/'},
+    {id:4, img:'images/blured/', answer: 'писька', correctImg: 'images/correct/'},
+    {id:5, img:'images/blured/', answer: 'жопа', correctImg: 'images/correct/'},
     {id:6, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
     {id:7, img:'images/blured/', answer: '', correctImg: 'images/correct/'},
 ]
@@ -55,10 +55,31 @@ function updateStats(){
 }
 
 function nextQuestion() {
+    if (memeInput.value.trim().length === 0) {
+        alert('Введите мем');
+        return;
+    }
+    if (memeInput.value.trim().toLowerCase() === quizData[currentQuestionId - 1].answer.toLowerCase()) {
 
-
+        correctAnswers += 1;
+        currentQuestionId += 1;
+    } else {
+        wrongAnswers += 1;
+        currentQuestionId += 1;
+    }
+    showCorrectAnswer()
+    memeInput.value = ''
+    // renderQuestionImg(currentQuestionId - 1)
     setLocalStorageData();
     updateStats();
+}
+
+function renderQuestionImg(id) {
+    memeImg.src = quizData[id].img;
+}
+
+function showCorrectAnswer() {
+
 }
 
 function setLocalStorageData() {
@@ -79,6 +100,5 @@ startBtn.addEventListener('keydown', (e) => {
 })
 
 submitBtn.addEventListener('click', nextQuestion);
-
 
 onLoad();
