@@ -17,8 +17,8 @@ const wrongEl = document.getElementById('notCorrect');
 
 // Данные о вопросах
 const quizData =  [
-    {id:1, img:'images/blured/', answer: 'почему', correctImg: 'images/correct/'},
-    {id:2, img:'images/blured/', answer: 'окак', correctImg: 'images/correct/'},
+    {id:1, img:'images/blured/mem1blured.jpg', answer: 'почему', correctImg: 'images/correct/mem1.jpeg'},
+    {id:2, img:'images/blured/meme2blured.jpg', answer: 'чугун', correctImg: 'images/correct/meme2.jpg'},
     {id:3, img:'images/blured/', answer: 'зачем', correctImg: 'images/correct/'},
     {id:4, img:'images/blured/', answer: 'писька', correctImg: 'images/correct/'},
     {id:5, img:'images/blured/', answer: 'жопа', correctImg: 'images/correct/'},
@@ -41,7 +41,7 @@ function onLoad(){
 function startQuiz() {
     startPage.style.display = 'none'
     quizBlock.style.display = 'block';
-
+    renderQuestionImg(currentQuestionId - 1)
     getLocaleStorageData();
     updateStats()
 }
@@ -55,31 +55,49 @@ function updateStats(){
 }
 
 function nextQuestion() {
+    if (currentQuestionId > quizData.length) {
+        showResult();
+    }
+
+
+
     if (memeInput.value.trim().length === 0) {
         alert('Введите мем');
         return;
     }
     if (memeInput.value.trim().toLowerCase() === quizData[currentQuestionId - 1].answer.toLowerCase()) {
-
-        correctAnswers += 1;
-        currentQuestionId += 1;
+        showCorrectAnswer(currentQuestionId - 1)
+        correctAnswers++;
     } else {
-        wrongAnswers += 1;
-        currentQuestionId += 1;
+        showCorrectAnswer(currentQuestionId - 1)
+        wrongAnswers++;
     }
-    showCorrectAnswer()
-    memeInput.value = ''
-    // renderQuestionImg(currentQuestionId - 1)
-    setLocalStorageData();
-    updateStats();
+
+    setTimeout(() => {
+        currentQuestionId++;
+        memeInput.value = '';
+        renderQuestionImg(currentQuestionId - 1);
+        hideCorrectAnswer();
+        setLocalStorageData();
+        updateStats();
+    }, 3000);
+
+
 }
 
 function renderQuestionImg(id) {
     memeImg.src = quizData[id].img;
+    correctMemeImg.src = quizData[id].correctImg
 }
 
 function showCorrectAnswer() {
+    memeImg.style.display = 'none'
+    correctMemeImg.style.display = 'inline-block'
+}
 
+function hideCorrectAnswer() {
+    memeImg.style.display = 'inline-block'
+    correctMemeImg.style.display = 'none'
 }
 
 function setLocalStorageData() {
@@ -87,6 +105,11 @@ function setLocalStorageData() {
 }
 
 function getLocaleStorageData() {
+
+}
+
+
+function showResult() {
 
 }
 

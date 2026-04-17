@@ -7,7 +7,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Стартовый экран */
 .starter-page {
     display: flex;
     flex-direction: column;
@@ -19,7 +18,6 @@ body {
     font-size: 24px;
 }
 
-/* Кнопки */
 button {
     cursor: pointer;
     border: none;
@@ -32,6 +30,19 @@ button {
 .start-btn {
     background: #4f46e5;
     color: white;
+    width: 230px;
+}
+
+.stater-image {
+    width: 400px
+}
+
+.correct-img {
+    display: none;
+}
+
+.question-img, .correct-img {
+    width: 500px;
 }
 
 .start-btn:hover {
@@ -51,21 +62,18 @@ button:active {
     transform: scale(0.96);
 }
 
-/* Блок с вопросом */
 .quiz-block {
     display: none;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Номер вопроса */
 .question-number {
     font-size: 20px;
     opacity: 0.8;
     margin-bottom: 20px;
 }
 
-/* Картинка */
 #memeImg,
 #correctMemeImg {
     max-width: 100%;
@@ -74,7 +82,6 @@ button:active {
     margin-bottom: 20px;
 }
 
-/* Подпись */
 .write {
     font-size: 18px;
     font-weight: 500;
@@ -82,7 +89,6 @@ button:active {
 
 }
 
-/* Инпут + кнопка */
 .input-item {
     display: flex;
     gap: 10px;
